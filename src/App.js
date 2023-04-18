@@ -6,7 +6,9 @@ const App = () =>{
         <div className="app">
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Homepage/>}/>
+                    <Route path="/" element={<Homepage/>}>
+                        <Route path="/tasks" element={<h1>hell </h1>}></Route>
+                    </Route>
                 </Routes>
             </BrowserRouter>
         </div>
