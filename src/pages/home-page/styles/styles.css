@@ -1,0 +1,24 @@
+.navbar{
+    box-shadow: 1px 9px 34px -8px rgba(181,144,144,1);
+}
+
+.navbar .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar-menu a:nth-child(2) {
+   margin: 3.5rem;
+}
+
+.navbar-menu a{
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: .5rem 1.2rem;
+    border-radius: .3rem;
+}
+
+.navbar-menu .active{
+    background-color: #61dafb;
+
+}
