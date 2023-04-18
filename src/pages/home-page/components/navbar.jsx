@@ -6,7 +6,7 @@ const Navbar = () => {
             <div className="container">
                 <div className="navbar-menu">
                     <NavLink to="/">Home</NavLink>
-                    <NavLink to="/tasks">Tasks</NavLink>
+                    <NavLink to="/tasks">TaskManager</NavLink>
                     <NavLink to="/about">About</NavLink>
                 </div>
                 <h2 className="navbar-brand">

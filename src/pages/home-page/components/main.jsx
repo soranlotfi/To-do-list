@@ -1,4 +1,5 @@
 import "../styles/styles.css"
+import {Link} from "react-router-dom";
 const Main = ()=>{
     return(
         <main className="app-introduce">
@@ -9,6 +10,11 @@ const Main = ()=>{
                     <h3>Mange Your Time</h3>
                     <h4>We are here to make the diffrences</h4>
                     <p>A great experience of working with a to do list</p>
+                    <button className="btn main-section-btn">
+                        <Link to="/taskmanager" >
+                            Lets Go
+                        </Link>
+                    </button>
                 </div>
             </div>
         </main>

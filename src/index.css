@@ -22,3 +22,10 @@ a{
   color: inherit;
   text-decoration: none;
 }
+
+.btn{
+  border-radius: 0.3rem;
+  outline: none;
+  border: none;
+  padding: .5rem 1rem ;
+}
