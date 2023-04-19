@@ -1,4 +1,4 @@
-import {NavLink} from "react-router-dom";
+import {NavLink, Outlet} from "react-router-dom";
 
 const Navbar = () => {
     return (
@@ -13,6 +13,8 @@ const Navbar = () => {
                     Todo List
                 </h2>
             </div>
+            <Outlet/>
+
         </nav>
     )
 }

@@ -1,14 +1,15 @@
-import {BrowserRouter,Routes,Route} from "react-router-dom";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Homepage from "./pages/home-page/Homepage";
+import About from "./pages/about-page/About";
+import PageLayout from "./PageLayout";
 
-const App = () =>{
-    return(
+const App = () => {
+    return (
         <div className="app">
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Homepage/>}>
-                        <Route path="/tasks" element={<h1>hell </h1>}></Route>
-                    </Route>
+                    <Route path="/" element={<Homepage/>}/>
+                    <Route path="/about" element={<About/>}/>
                 </Routes>
             </BrowserRouter>
         </div>

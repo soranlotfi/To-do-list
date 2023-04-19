@@ -1,5 +1,5 @@
 import "../styles/styles.css"
-import {Link} from "react-router-dom";
+import {Link, Outlet} from "react-router-dom";
 const Main = ()=>{
     return(
         <main className="app-introduce">
@@ -17,6 +17,7 @@ const Main = ()=>{
                     </button>
                 </div>
             </div>
+
         </main>
     )
 }
