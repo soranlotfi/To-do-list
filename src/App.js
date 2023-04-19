@@ -1,14 +1,16 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Homepage from "./pages/home-page/Homepage";
-import About from "./pages/about-page/About";
 
+import About from "./pages/AboutPage";
+import HomePage from "./pages/HomePage";
+import TaskPage from "./pages/TaskPage";
 const App = () => {
     return (
         <div className="app">
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Homepage/>}/>
+                    <Route path="/" element={<HomePage/>}/>
                     <Route path="/about" element={<About/>}/>
+                    <Route path="/tasks" element={<TaskPage/>}/>
                 </Routes>
             </BrowserRouter>
         </div>
