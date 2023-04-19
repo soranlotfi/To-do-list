@@ -1,7 +1,6 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Homepage from "./pages/home-page/Homepage";
 import About from "./pages/about-page/About";
-import PageLayout from "./PageLayout";
 
 const App = () => {
     return (
