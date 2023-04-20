@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import "./styles/styles.css"
 import PageLayout from "../../Components/Layouts/PageLayout";
+import Footer from "../../Components/Layouts/Footer";
 
 
 const HomePage = () => {
@@ -22,6 +23,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </main>
+            <Footer/>
         </PageLayout>
 
     )

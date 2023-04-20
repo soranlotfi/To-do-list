@@ -1,0 +1,15 @@
+.taskpage-container {
+    height: 65vh;
+}
+
+.taskpage-container .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-container {
+    border: 1px solid red;
+}
+
