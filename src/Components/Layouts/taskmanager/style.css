@@ -1,15 +1,90 @@
-.taskpage-container {
-    height: 65vh;
-}
 
-.taskpage-container .container {
+.taskpage-container {
+    padding: 1.5rem ;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .todo-container {
-    border: 1px solid red;
+    padding: .8rem;
+    border-radius: .3rem;
+    background-color: #eeeaea;
+    border: 1px solid #FFA3FD;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+    width: 60%;
+    height: 70vh;
+}
+/*task entert styling*/
+.task-body{
+    background-color: #8462cc;
+    flex-basis: 40%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
 }
 
+.task-top{
+    width: 100%;
+    color: #eeeaea;
+}
+
+.todo-entry{
+    flex-basis: 60%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.input-container{
+    background-color: #ffffff;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    border-radius:5rem;
+    padding: .6rem 1rem;
+    flex-direction: row-reverse;
+    position: relative;
+}
+
+.input-container input{
+    border: none;
+    outline: none;
+}
+.date-input{
+    width: 100%;
+}
+
+.label{
+    position: absolute;
+    top: -25px;
+    left: 10px;
+    color: #eeeaea;
+}
+
+.submitBtn{
+    background-color: #82CD47;
+    cursor: pointer;
+    color: #F6F1E9;
+    padding: .5rem 2.5rem;
+    font-weight: 500;
+    font-size: .99rem;
+}
+
+/*todos-show*/
+.todos-show{
+    background-color: rgba(25,36,52,.3);
+    flex-basis: 60%;
+    height: 100%;
+    padding:0 1rem;
+}
