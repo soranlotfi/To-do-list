@@ -1,0 +1,41 @@
+
+.nfContainer{
+    width: 100%;
+    height: 100vh;
+    background-color: #7149C6;
+}
+
+.nfContainer .container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    text-align: center;
+}
+
+.nfTitle{
+    font-size: 10rem;
+    color: #eeeaea;
+}
+
+.nfText{
+    margin-top: -2.5rem;
+    color: #eeeaea;
+    font-size: 1.5rem;
+    margin-bottom: 3.5rem;
+
+}
+
+
+.toHome button{
+    cursor: pointer;
+    background-color: #9f6d2b;
+    color: #eeeaea;
+    transition: all .3s ease-in-out;
+}
+
+.toHome button:hover{
+    background-color: #eeeaea;
+    color:#282c34 ;
+}
