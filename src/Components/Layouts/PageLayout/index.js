@@ -1,11 +1,11 @@
 import Footer from "../Footer";
 import {Navbar} from "../Navbar";
 
-const PageLayout = ({children}) => {
+const PageLayout = ({children, footer = true}) => {
     return <>
         <Navbar/>
         {children}
-        {/*<Footer/>*/}
+        {footer === true && <Footer/>}
     </>
 
 }

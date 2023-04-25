@@ -3,7 +3,7 @@ import Footer from "../../Components/Layouts/Footer";
 import "./style.css"
 const About= ()=>{
     return(
-        <PageLayout>
+        <PageLayout >
             <div className="about-page">
                 <div className="container">
                     <h1>About Us</h1>
@@ -21,7 +21,6 @@ const About= ()=>{
 
                 </div>
             </div>
-            <Footer/>
         </PageLayout>
     )
 }

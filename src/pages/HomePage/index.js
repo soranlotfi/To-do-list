@@ -8,7 +8,7 @@ const HomePage = () => {
     return (
         <PageLayout>
             <main className="app-introduce">
-                <div  className="container">
+                <div className="container">
                     <img className="main-section-img" src={require('../../Assets/images/OIP.jpg')} alt=""/>
                     <div className="main-section-captions">
                         <h2>Soran's Todo List</h2>
@@ -22,8 +22,8 @@ const HomePage = () => {
                         </button>
                     </div>
                 </div>
+
             </main>
-            <Footer/>
         </PageLayout>
 
     )
