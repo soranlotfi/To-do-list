@@ -12,6 +12,9 @@ const homeData = {
     todoListLetsGo: "LetsGo",
 };
 
-const aboutData = {};
+const aboutData = {
+    title:"About Us",
+    desc :"with to do list app you can easily manage your daily works and make the best uses of your time"
+};
 
 export {homeData, aboutData}

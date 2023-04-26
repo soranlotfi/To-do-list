@@ -1,8 +1,5 @@
 import "./style.css"
-import DatePicker from "react-multi-date-picker";
 import "react-date-object/calendars/persian"
-import persian from "react-date-object/calendars/persian"
-import persian_fa from "react-date-object/locales/persian_fa"
 import TodoCard from "../taskCard";
 
 
@@ -24,15 +21,6 @@ const TaskManager = () => {
                           <div className="input-container" id="date">
                               <label htmlFor="date" className="label">Date</label>
 
-                              {/*<i className="fa fa-calendar"></i>*/}
-                              {/*<DatePicker className="dt-pick"
-                                          inputMode="none"
-                                          editable={false}
-                                          calendar={persian}
-                                          locale={persian_fa}
-
-
-                              />*/}
                               <input type="date" className="date-input"/>
                       </div>
                           <button className="btn submitBtn">

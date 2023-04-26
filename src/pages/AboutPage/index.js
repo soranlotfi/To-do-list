@@ -1,23 +1,29 @@
 import PageLayout from "../../Components/Layouts/PageLayout";
 import Footer from "../../Components/Layouts/Footer";
 import "./style.css"
+import {aboutData} from "../../Data/Static/data";
+import {useEffect, useState} from "react";
 const About= ()=>{
+    const [data,setData]=useState({})
+    useEffect(()=>{
+        setData(aboutData)
+    },[])
     return(
         <PageLayout >
             <div className="about-page">
                 <div className="container">
-                    <h1>About Us</h1>
-                    <p>Todo List is an app which helps yot to manage your daily works and tasks.</p>
-                    <p>Todo List is an app which helps yot to manage your daily works and tasks.</p>
-                    <p>Todo List is an app which helps yot to manage your daily works and tasks.</p>
-                    <p>Todo List is an app which helps yot to manage your daily works and tasks.</p>
-                    <p>Todo List is an app which helps yot to manage your daily works and tasks.</p>
-                    <p>Todo List is an app which helps yot to manage your daily works and tasks.</p>
-                    <p>Todo List is an app which helps yot to manage your daily works and tasks.</p>
-                    <p>Todo List is an app which helps yot to manage your daily works and tasks.</p>
-                    <p>Todo List is an app which helps yot to manage your daily works and tasks.</p>
-                    <p>Todo List is an app which helps yot to manage your daily works and tasks.</p>
-                    <p>Todo List is an app which helps yot to manage your daily works and tasks.</p>
+                    <h1>{data.title}</h1>
+                    <p>{data.desc}</p>
+                    <p>{data.desc}</p>
+                    <p>{data.desc}</p>
+                    <p>{data.desc}</p>
+                    <p>{data.desc}</p>
+                    <p>{data.desc}</p>
+                    <p>{data.desc}</p>
+                    <p>{data.desc}</p>
+                    <p>{data.desc}</p>
+                    <p>{data.desc}</p>
+                    <p>{data.desc}</p>
 
                 </div>
             </div>
