@@ -1,6 +1,6 @@
 import PageLayout from "../../Components/Layouts/PageLayout";
-import TaskManager from "../../Components/Layouts/taskmanager";
-import TodoCard from "../../Components/Layouts/taskCard";
+import TaskManager from "../../Components/taskmanager";
+import TodoCard from "../../Components/taskCard";
 import {useRef, useState} from "react";
 
 const TaskPage = () => {

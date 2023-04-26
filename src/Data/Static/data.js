@@ -5,7 +5,7 @@
 //TODO:: Use Custom Box Instead of using div.
 //TODO:: Key Prop In Map.
 const homeData = {
-    todoListTitle: "Soran's Todo List",
+    todoListTitle: "Our new Todo List",
     todoListDesc: "Manage Your Time",
     todoListFirstLine: "We are here to make the diffrences",
     todoListSecondLine: "A great experience of working with a to do list",

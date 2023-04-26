@@ -2,22 +2,31 @@ import {Link} from "react-router-dom";
 import "./styles/styles.css"
 import PageLayout from "../../Components/Layouts/PageLayout";
 import Footer from "../../Components/Layouts/Footer";
+import {homeData} from "../../Data/Static/data";
+import {useEffect, useState} from "react";
 
 
 const HomePage = () => {
+
+    const [HomeData,setHomeData]=useState({})
+
+   useEffect(()=>{
+       setHomeData(homeData)
+   },[])
+console.log(HomeData)
     return (
         <PageLayout>
             <main className="app-introduce">
                 <div className="container">
                     <img className="main-section-img" src={require('../../Assets/images/OIP.jpg')} alt=""/>
                     <div className="main-section-captions">
-                        <h2>Soran's Todo List</h2>
-                        <h3>Manage Your Time</h3>
-                        <h4>We are here to make the diffrences</h4>
-                        <p>A great experience of working with a to do list</p>
+                        <h2>{HomeData.todoListTitle}</h2>
+                        <h3>{HomeData.todoListDesc}</h3>
+                        <h4>{HomeData.todoListFirstLine}</h4>
+                        <p>{homeData.todoListSecondLine}</p>
                         <button className="btn main-section-btn">
                             <Link to="/taskmanager">
-                                Lets Go
+                                {HomeData.todoListLetsGo}
                             </Link>
                         </button>
                     </div>
