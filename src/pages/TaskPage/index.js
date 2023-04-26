@@ -1,15 +1,22 @@
 import PageLayout from "../../Components/Layouts/PageLayout";
-import TaskManager from "../../Components/taskmanager";
-import TodoCard from "../../Components/taskCard";
+import "./style.css"
+import TodoCard from "./components/TasktCard/index";
 import {useRef, useState} from "react";
 
 const TaskPage = () => {
-    const [list, setList] = useState([1, 3, ]);
-    const input1 = useRef(null);
+    var [data, setData] = useState([]);
+    const input1 = useRef();
+    const input2=useRef()
 
-    function handleClick() {
-        console.log(input1.current)
-    }
+
+    const handleClick = (event) => {
+        event.preventDefault();
+        const name = input1.current.value;
+        const date = input2.current.value;
+        setData([...data, { name,date }]);
+        input1.current.value = '';
+        console.log(data)
+    };
 
     return (
         <PageLayout footer={false}>
@@ -20,36 +27,31 @@ const TaskPage = () => {
                             <h1>My Todo</h1>
                         </div>
                         {/*-------------------------------------*/}
-                        <div className="todo-entry">
+                        <form className="todo-entry">
                             <div className="input-container" id="name">
                                 <label htmlFor="name" className="label">Name</label>
                                 <i className="fa fa-chevron-left"></i>
-                                <input type="text" className="name-input" ref={input1}/>
+                                <input
+                                    autoComplete="none"
+                                    type="text" className="name-input" ref={input1}/>
                             </div>
                             <div className="input-container" id="date">
                                 <label htmlFor="date" className="label">Date</label>
 
-                                {/*<i className="fa fa-calendar"></i>*/}
-                                {/*<DatePicker className="dt-pick"
-                                          inputMode="none"
-                                          editable={false}
-                                          calendar={persian}
-                                          locale={persian_fa}
-
-
-                              />*/}
-                                <input type="date" className="date-input"/>
+                                <input type="date" className="date-input" ref={input2}/>
                             </div>
                             <button className="btn submitBtn" onClick={handleClick}>
                                 Submit
                             </button>
-                        </div>
+                        </form>
                     </div>
                     <div className="todos-show">
                         <div className="todoCard-container">
-                            {list.map(r =>
-                                <TodoCard/>
-                            )}
+                            {
+                                data.map(r=>{
+                                    <TodoCard/>
+                                })
+                            }
                         </div>
                     </div>
                 </div>
