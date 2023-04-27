@@ -4,6 +4,11 @@
 //TODO:: Fix Task Manager.
 //TODO:: Use Custom Box Instead of using div.
 //TODO:: Key Prop In Map.
+//=================================
+//Todo::implement : formik . Yup  .  MUI in project
+//TODO :: Use Formik and Yup in all Forms ( i mean if you even see an input we gonna recognize it as form )
+//TODO :: Use React Context in Todo List .
+
 const homeData = {
     todoListTitle: "Our new Todo List",
     todoListDesc: "Manage Your Time",
