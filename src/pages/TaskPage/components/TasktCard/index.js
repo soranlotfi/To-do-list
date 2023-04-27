@@ -8,7 +8,8 @@ const TodoCard = ({name,date})=>{
 
             <div className="task-card">
                 <div className="taskCard-title">
-                    <h3> tehran</h3>
+                    <h3> {name}</h3>
+                    <h6>{date}</h6>
                 </div>
                 <div className="task-btns">
                     <button className="taskBtn deleteBtn">

@@ -2,6 +2,7 @@ import PageLayout from "../../Components/Layouts/PageLayout";
 import "./style.css"
 import TodoCard from "./components/TasktCard/index";
 import {useRef, useState} from "react";
+import { v4 as uuid  } from "uuid"
 
 const TaskPage = () => {
     var [data, setData] = useState([]);
@@ -48,9 +49,9 @@ const TaskPage = () => {
                     <div className="todos-show">
                         <div className="todoCard-container">
                             {
-                                data.map(r=>{
-                                    <TodoCard/>
-                                })
+                                data.map(r=>
+                                    <TodoCard key={uuid()} name={r.name} date={r.date}/>
+                                )
                             }
                         </div>
                     </div>
