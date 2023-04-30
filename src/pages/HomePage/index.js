@@ -1,7 +1,6 @@
 import {Link} from "react-router-dom";
 import "./styles/styles.css"
 import PageLayout from "../../Components/Layouts/PageLayout";
-import Footer from "../../Components/Layouts/Footer";
 import {homeData} from "../../Data/Static/data";
 import {useEffect, useState} from "react";
 
@@ -13,7 +12,6 @@ const HomePage = () => {
    useEffect(()=>{
        setHomeData(homeData)
    },[])
-console.log(HomeData)
     return (
         <PageLayout>
             <main className="app-introduce">

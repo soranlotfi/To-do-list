@@ -88,3 +88,11 @@
     height: 100%;
     padding:0 1rem;
 }
+
+.input-container p {
+    color: #ea9f9f;
+    font-size: .7rem;
+    position: absolute;
+    bottom:-2rem;
+    left: .4rem;
+}
