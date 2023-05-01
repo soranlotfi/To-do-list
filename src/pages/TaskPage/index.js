@@ -7,20 +7,31 @@ import {v4 as uuid} from "uuid"
 import {useFormik} from "formik";
 import * as Yup from "yup"
 import button from "bootstrap/js/src/button";
-import {Button} from "react-bootstrap";
+import {useAppContextController} from "../../context/appContext";
 
+const validationSchema = Yup.object({
+    taskName: Yup.string().max(20, "the max size of the first name is 20 ..!").required("taskName cannot be emptey"),
+
+    taskDate: Yup.date().required("Todo date can not be empty ..!")
+})
 const TaskPage = () => {
+    const [controller, dispatch] = useAppContextController()
+    const {test} = controller
+    const handleSubmit = (values) => {
+        console.log(values)
+        const name =values.taskName;
+        const date =values.taskName;
+
+        setData(r => [...r, {name, date}]);
+        // console.log(data)
+    };
     const formik = useFormik({
         initialValues: {
             taskName: "",
             taskDate: ""
         },
-        validationSchema: Yup.object({
-            taskName: Yup.string().max(20, "the max size of the first name is 20 ..!").required("taskName cannot be emptey"),
-
-            taskDate: Yup.date().required("Todo date can not be empty ..!")
-        })
-
+        validationSchema,
+        onSubmit:handleSubmit
     })
     // formik section
 
@@ -30,15 +41,7 @@ const TaskPage = () => {
     const input2 = useRef()
 
 
-    const handleClick = (event) => {
-        event.preventDefault();
-        const name = input1.current?.value;
-        const date = input2.current?.value;
-        setData(r => [...r, {name, date}]);
-        input1.current.value = '';
-        // console.log(data)
-    };
-    console.log(formik.errors)
+
     return (
         <PageLayout footer={false}>
             <section className="taskpage-container">
@@ -47,8 +50,9 @@ const TaskPage = () => {
                         <div className="task-top">
                             <h1>My Todo</h1>
                         </div>
+                        <div hidden={!test}> sajad</div>
                         {/*-------------------------------------*/}
-                        <form className="todo-entry" onSubmit={formik.handleSubmit} >
+                        <form className="todo-entry" onSubmit={formik.handleSubmit}>
                             <div className="input-container" id="name">
                                 <label htmlFor="name" className="label">Name</label>
                                 <i className="fa fa-chevron-left"></i>
@@ -63,7 +67,8 @@ const TaskPage = () => {
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                 />
-                                {formik.errors.taskName && formik.touched.taskName ?  <p>{formik.errors.taskName}</p> :null }
+                                {formik.errors.taskName && formik.touched.taskName ?
+                                    <p>{formik.errors.taskName}</p> : null}
                             </div>
                             <div className="input-container" id="date">
                                 <label htmlFor="date" className="label">Date</label>
@@ -78,14 +83,13 @@ const TaskPage = () => {
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                 />
-                                {formik.errors.taskDate && formik.touched.taskDate ?  <p className="error message">{formik.errors.taskDate}</p> :null }
+                                {formik.errors.taskDate && formik.touched.taskDate ?
+                                    <p className="error message">{formik.errors.taskDate}</p> : null}
                             </div>
                             <button
                                 disabled={Object.keys(formik.errors).length > 0}
                                 className="btn submitBtn"
-                                type="submit"
-                                onClick={handleClick}
-                            >
+                                type="submit">
                                 Submit
                             </button>
 
