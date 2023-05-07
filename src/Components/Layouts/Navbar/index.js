@@ -11,7 +11,6 @@ export const Navbar = () => {
                 <NavLink to="/tasks">TaskManager</NavLink>
                 <NavLink to="/about">About</NavLink>
             </div>
-            <div onClick={() => setTest(dispatch, !controller.test)}>K</div>
             <h2 className="navbar-brand">
                 Todo List
             </h2>

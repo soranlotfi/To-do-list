@@ -87,6 +87,7 @@
     flex-basis: 60%;
     height: 100%;
     padding:0 1rem;
+    overflow: auto;
 }
 
 .input-container p {
