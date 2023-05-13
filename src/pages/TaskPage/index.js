@@ -1,8 +1,8 @@
 import PageLayout from "../../Components/Layouts/PageLayout";
 import "./style.css"
-import React, {useReducer} from "react";
+import React from "react";
 import TodoCard from "./components/TasktCard/index";
-import {v4 as uuid} from "uuid"
+// import {v4 as uuid} from "uuid"
 import {useFormik} from "formik";
 import * as Yup from "yup"
 import {useTodoContext} from "../../context/TodoProvider";
@@ -13,41 +13,41 @@ const validationSchema = Yup.object({
     taskDate: Yup.date().required("Todo date can not be empty ..!")
 })
 
-export const ACTIONS = {
-    ADD_TODO: "add-todo",
-    TOGGLE_TODO: "toggle-todo",
-    DELETE_TODO: "delete-todo",
-}
+// export const ACTIONS = {
+//     ADD_TODO: "add-task",
+//     TOGGLE_TODO: "toggle-task",
+//     DELETE_TODO: "delete-task",
+// }
 
 // The reducer function manages create toggle and delete
-export function reducer(todos, action) {
-    switch (action.type) {
-        case ACTIONS.ADD_TODO:
-            return [...todos, newTodo(action.payload.name, action.payload.date)]
-        case ACTIONS.TOGGLE_TODO:
-            return todos.map(todo => {
-                if (todo.id === action.payload.id) {
-                    console.log(todo.completed)
-                    return {...todo, completed: !todo.completed}
-                }
-                return todo
-            })
-        case ACTIONS.DELETE_TODO:
-            return todos.filter(todo => todo.id !== action.payload.id)
-        default:
-            return todos
-    }
+// export function reducer(todos, action) {
+//     switch (action.type) {
+//         case ACTIONS.ADD_TODO:
+//             return [...todos, newTodo(action.payload.name, action.payload.date)]
+//         case ACTIONS.TOGGLE_TODO:
+//             return todos.map(task => {
+//                 if (task.id === action.payload.id) {
+//                     console.log(task.completed)
+//                     return {...task, completed: !task.completed}
+//                 }
+//                 return task
+//             })
+//         case ACTIONS.DELETE_TODO:
+//             return todos.filter(task => task.id !== action.payload.id)
+//         default:
+//             return todos
+//     }
+//
+// }
 
-}
 
-
-function newTodo(name, date) {
-    return {id: uuid(), name: name, date: date, completed: false}
-}
+// function newTodo(name, date) {
+//     return {id: uuid(), name: name, date: date, completed: false}
+// }
 
 const TaskPage = () => {
     const {AddTodo,todoList} = useTodoContext()
-    const [todos, dispatch] = useReducer(reducer, [])
+    // const [todos, dispatch] = useReducer(reducer, [])
     const handleSubmit = (values) => {
         console.log(values)
         AddTodo(values);
@@ -116,8 +116,8 @@ const TaskPage = () => {
                     <div className="todos-show">
                         <div className="todoCard-container">
                             {
-                                todos.map(todo =>
-                                    <TodoCard key={todo.id} todo={todo} dispatch={dispatch}/>
+                                todoList.map(todo =>
+                                    <TodoCard key={todo.id}  todo={todo}/>
                                 )
                             }
                         </div>

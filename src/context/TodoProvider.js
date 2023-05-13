@@ -15,13 +15,13 @@ function todoListReducer(state, action) {
             }]
         case ACTIONS.TOGGLE_TODO:
             return state.map(todo => {
-                if (todo.id === action.payload.id) {
-                    todo.completed = !todo.completed
-                }
-                return todo
+                // if (todo.id === action.payload.id) {
+                    console.log(todo.id , action.payload.id)
+                // }
+                // return todo
             })
         case ACTIONS.DELETE_TODO:
-            return state.filter(todo => todo.id !== action.payload.id)
+            return state.map(todo=>console.log("hello") );
         default:
             throw new Error(`Unhandled action type: ${action.type}`);
     }
@@ -29,8 +29,11 @@ function todoListReducer(state, action) {
 
 const TodoProvider = ({children}) => {
     const initialTodoValue = [];
-    const [todoList, dispatch] = useReducer(todoListReducer, initialTodoValue)
+    const [todoList, dispatch] = useReducer(todoListReducer, [])
 
+    useEffect(()=> {
+        console.log(todoList)
+    } ,[todoList])
 
     const todosNumber = () => {
         return todoList.length;
@@ -38,22 +41,24 @@ const TodoProvider = ({children}) => {
     const AddTodo = (values) => {
         // const todoItem = JSON.parse(JSON.stringify(values))
         dispatch({type: ACTIONS.ADD_TODO, payload: values})
-        console.log(todoList)
-
     }
-    const DeleteTodo = (id) => {
-        dispatch({type: ACTIONS.DELETE_TODO, payload: id})
+    const RemoveTodo = (todo) => {
+        console.log(todo)
+        dispatch({type: ACTIONS.DELETE_TODO, payload: todo.name})
     }
 
-    const ToggleTodo = (id) => {
-        dispatch({type: ACTIONS.TOGGLE_TODO, payload: id})
+    const ToggleTodo = (todo) => {
+        console.log("to do in toggle : ")
+        console.log(todo)
+        dispatch({type: ACTIONS.TOGGLE_TODO, payload:todo.id})
     }
 
     const contextValue = {
         todosNumber,
         AddTodo,
-        DeleteTodo,
-        ToggleTodo
+        RemoveTodo,
+        ToggleTodo,
+        todoList
     }
 
     return (
