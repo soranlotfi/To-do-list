@@ -1,9 +1,6 @@
 import {NavLink} from "react-router-dom";
-import {useAppContextController, setTest} from "../../../context/appContext";
 
 export const Navbar = () => {
-    const [controller, dispatch] = useAppContextController()
-
     return <nav className="navbar">
         <div className="container">
             <div className="navbar-menu">

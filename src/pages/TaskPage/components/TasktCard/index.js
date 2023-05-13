@@ -1,6 +1,5 @@
 import "./style.css"
 import {ACTIONS} from "../../index";
-import {reducer} from "../../index";
 
 const TodoCard = ({todo, dispatch}) => {
     console.log("here is :")

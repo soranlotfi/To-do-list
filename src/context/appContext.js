@@ -1,5 +1,4 @@
 import {useReducer, createContext, useContext, useMemo} from "react";
-import App from "../App";
 import PropTypes from "prop-types";
 
 const AppContext = createContext();

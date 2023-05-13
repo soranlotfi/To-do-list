@@ -1,12 +1,12 @@
 import PageLayout from "../../Components/Layouts/PageLayout";
 import "./style.css"
-import React, {useReducer, useState} from "react";
+import React, {useReducer} from "react";
 import TodoCard from "./components/TasktCard/index";
 import {v4 as uuid} from "uuid"
 import {useFormik} from "formik";
 import * as Yup from "yup"
-import button from "bootstrap/js/src/button";
-import {useAppContextController} from "../../context/appContext";
+import {useTodoContext} from "../../context/TodoProvider";
+
 
 const validationSchema = Yup.object({
     taskName: Yup.string().max(20, "the max size of the first name is 20 ..!").required("taskName cannot be emptey"),
@@ -33,24 +33,24 @@ export function reducer(todos, action) {
                 return todo
             })
         case ACTIONS.DELETE_TODO:
-            return todos.filter(todo => todo.id != action.payload.id)
+            return todos.filter(todo => todo.id !== action.payload.id)
         default:
             return todos
     }
 
 }
 
-// this function generates a new to do and stores it
+
 function newTodo(name, date) {
     return {id: uuid(), name: name, date: date, completed: false}
 }
 
 const TaskPage = () => {
+    const {AddTodo,todoList} = useTodoContext()
     const [todos, dispatch] = useReducer(reducer, [])
-    
     const handleSubmit = (values) => {
         console.log(values)
-        dispatch({type: ACTIONS.ADD_TODO, payload: {name: values.taskName, date: values.taskDate}})
+        AddTodo(values);
     };
     const formik = useFormik({
         initialValues: {

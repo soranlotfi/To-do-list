@@ -1,5 +1,4 @@
 import PageLayout from "../../Components/Layouts/PageLayout";
-import Footer from "../../Components/Layouts/Footer";
 import "./style.css"
 import {aboutData} from "../../Data/Static/data";
 import {useEffect, useState} from "react";
