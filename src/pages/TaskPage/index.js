@@ -102,7 +102,7 @@ const TaskPage = () => {
                                     onBlur={formik.handleBlur}
                                 />
                                 {formik.errors.taskDate && formik.touched.taskDate ?
-                                    <p className="error message">{formik.errors.taskDate}</p> : null}
+                                    <p className="error-message">{formik.errors.taskDate}</p> : null}
                             </div>
                             <button
                                 disabled={Object.keys(formik.errors).length > 0}

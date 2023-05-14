@@ -7,29 +7,35 @@ const ACTIONS = {
     ADD_TODO: 'ADD_TODO', TOGGLE_TODO: 'TOGGLE_TODO', DELETE_TODO: 'DELETE_TODO'
 }
 
-function todoListReducer(state, action) {
-    switch (action.type) {
-        case ACTIONS.ADD_TODO:
-            return [...state, {
-                id: uuid(), name: action.payload.taskName, date: action.payload.taskDate, completed: false
-            }]
+function todoReducer(todoList , action){
+    switch (action.type){
+        case  ACTIONS.ADD_TODO :
+            return [
+                ...todoList ,
+                {
+                    id:uuid() ,
+                    name:action.payload.taskName,
+                    date:action.payload.taskDate,
+                    completed:false
+                }
+                ]
         case ACTIONS.TOGGLE_TODO:
-            return state.map(todo => {
-                // if (todo.id === action.payload.id) {
-                    console.log(todo.id , action.payload.id)
-                // }
-                // return todo
+           return  todoList.map(todo => {
+                if (todo.id === action.payload.id){
+                    console.log("barabar")
+                    return  {...todo , completed:!todo.completed}
+                }
+               console.log("nabarbar")
             })
-        case ACTIONS.DELETE_TODO:
-            return state.map(todo=>console.log("hello") );
-        default:
-            throw new Error(`Unhandled action type: ${action.type}`);
+        default :
+            return todoList
     }
+
 }
 
 const TodoProvider = ({children}) => {
     const initialTodoValue = [];
-    const [todoList, dispatch] = useReducer(todoListReducer, [])
+    const [todoList, dispatch] = useReducer(todoReducer, [])
 
     useEffect(()=> {
         console.log(todoList)
@@ -49,7 +55,7 @@ const TodoProvider = ({children}) => {
 
     const ToggleTodo = (todo) => {
         console.log("to do in toggle : ")
-        console.log(todo)
+        console.log(todo.id)
         dispatch({type: ACTIONS.TOGGLE_TODO, payload:todo.id})
     }
 
