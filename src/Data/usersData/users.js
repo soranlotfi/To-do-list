@@ -17,5 +17,7 @@ const users  = [
     }
 ]
 
-
+export const userCheck = (username,password)=>{
+    return users.find(user=>user.email===username && user.password===password)
+}
 

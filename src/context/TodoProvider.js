@@ -1,10 +1,10 @@
-import {useContext, createContext, useReducer, useEffect} from "react";
+import {useContext, createContext, useReducer, useEffect, useState} from "react";
 import {v4 as uuid} from "uuid"
 
 const TodoContext = createContext()
 
 const ACTIONS = {
-    ADD_TODO: 'ADD_TODO', TOGGLE_TODO: 'TOGGLE_TODO', DELETE_TODO: 'DELETE_TODO'
+    ADD_TODO: 'ADD_TODO', TOGGLE_TODO: 'TOGGLE_TODO', DELETE_TODO: 'DELETE_TODO',LOGIN_LOGOUT:"login-logout"
 }
 
 function todoReducer(todoList , action){
@@ -33,9 +33,28 @@ function todoReducer(todoList , action){
 
 }
 
+
+
+
 const TodoProvider = ({children}) => {
-    const initialTodoValue = [];
-    const [todoList, dispatch] = useReducer(todoReducer, [])
+    const [LoginInfo , setLoginInfo] = useState(false)
+    const [loggedIUserInfo , setLoggedInUserInfo] = useState("")
+    function LoginGenerator(LoginData){
+        setLoginInfo(true)
+        setLoggedInUserInfo(LoginData)
+    }
+
+    function LogoutGenerator(){
+        setLoginInfo(false)
+    }
+
+    useEffect(() => {
+        console.log(LoginInfo)
+    },[LoginInfo])
+
+
+    const initialTodoValue = ['learn react context api']
+    const [todoList, dispatch] = useReducer(todoReducer, initialTodoValue)
 
     useEffect(()=> {
         console.log(todoList)
@@ -45,7 +64,6 @@ const TodoProvider = ({children}) => {
         return todoList.length;
     }
     const AddTodo = (values) => {
-        // const todoItem = JSON.parse(JSON.stringify(values))
         dispatch({type: ACTIONS.ADD_TODO, payload: values})
     }
     const RemoveTodo = (todo) => {
@@ -64,7 +82,10 @@ const TodoProvider = ({children}) => {
         AddTodo,
         RemoveTodo,
         ToggleTodo,
-        todoList
+        todoList,
+        LoginInfo,
+        LoginGenerator,
+        loggedIUserInfo
     }
 
     return (
@@ -73,6 +94,8 @@ const TodoProvider = ({children}) => {
         </TodoContext.Provider>
     )
 }
+
+
 
 
 export const useTodoContext = () => useContext(TodoContext);

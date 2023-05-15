@@ -2,6 +2,7 @@ import {useFormik} from "formik";
 import * as Yup from "yup"
 import "./style.css"
 import {userCheck} from "../../Data/usersData/users";
+import {useTodoContext} from "../../context/TodoProvider";
 
 
 const validationSchema = Yup.object({
@@ -17,10 +18,12 @@ const validationSchema = Yup.object({
         .max(20, "Password cannot be longer than 20 characters")
         .required("You must enter a password")
 })
+
 const LoginPage = () => {
+    const {LoginGenerator} = useTodoContext()
     const handleSubmit = (values) => {
-        userCheck(values.userName, values.password
-        )
+        const LoginData =userCheck(values.userName , values.password) ;
+         LoginData ? LoginGenerator(LoginData) : alert("user not found")
     }
     const formik = useFormik(
         {
@@ -51,7 +54,6 @@ const LoginPage = () => {
                                 <input
                                     type="text"
                                     placeholder="email"
-                                    autoComplete="none"
                                     name="userName"
                                     id="userName"
                                     className="userName-input"

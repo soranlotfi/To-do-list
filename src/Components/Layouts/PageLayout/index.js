@@ -2,14 +2,21 @@ import Footer from "../Footer";
 import {Navbar} from "../Navbar";
 import "./style.css"
 import LoginPage from "../../../pages/loginPage";
+import {useTodoContext} from "../../../context/TodoProvider";
 
 const PageLayout = ({children, footer = true}) => {
-    return(
+    const {LoginInfo} = useTodoContext()
+    return (
         <div className="layOut">
-            <Navbar/>
-            <LoginPage/>
-            {/*{children}
-            {footer === true && <Footer/>}*/}
+            {LoginInfo ? (
+                <>
+                    <Navbar />
+                    {children}
+                    {footer === true && <Footer />}
+                </>
+            ) : (
+                <LoginPage />
+            )}
         </div>
     )
 
