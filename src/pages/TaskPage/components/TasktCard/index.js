@@ -1,11 +1,19 @@
 import "./style.css"
 import {useTodoContext} from "../../../../context/TodoProvider";
+import {removeTodo, useAppContextController} from "../../../../context/TodoNewContext";
 
 
 const TodoCard = ({todo}) => {
-    var id= todo.id
-    console.log("top-id" + id)
-    const {RemoveTodo,ToggleTodo} =useTodoContext()
+    var id = todo.id
+    const {ToggleTodo} = useTodoContext()
+    const [values, dispatch] = useAppContextController()
+    let {todo: td} = values
+
+    function RemoveTodo(id) {
+        let newtd = td.filter(p => p.id !== id)
+        removeTodo(dispatch, newtd)
+    }
+
     return (
         <div style={{opacity: todo.completed ? "0.3" : "1"}} className="task-card">
             <div className="taskCard-title">
@@ -14,7 +22,7 @@ const TodoCard = ({todo}) => {
             </div>
             <div className="task-btns">
                 <button
-                    onClick={()=>RemoveTodo({todo})}
+                    onClick={() => RemoveTodo(todo.id)}
                     className="taskBtn deleteBtn">
                     <i className="fa fa-trash"></i>
                 </button>

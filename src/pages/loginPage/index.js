@@ -22,8 +22,8 @@ const validationSchema = Yup.object({
 const LoginPage = () => {
     const {LoginGenerator} = useTodoContext()
     const handleSubmit = (values) => {
-        const LoginData =userCheck(values.userName , values.password) ;
-         LoginData ? LoginGenerator(LoginData) : alert("user not found")
+        const LoginData = userCheck(values.userName, values.password);
+        LoginData ? LoginGenerator(LoginData) : alert("user not found")
     }
     const formik = useFormik(
         {

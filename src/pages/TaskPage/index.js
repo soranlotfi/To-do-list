@@ -6,7 +6,8 @@ import TodoCard from "./components/TasktCard/index";
 import {useFormik} from "formik";
 import * as Yup from "yup"
 import {useTodoContext} from "../../context/TodoProvider";
-
+import {addTodo, useAppContextController} from "../../context/TodoNewContext";
+import {v4 as uuid} from "uuid"
 
 const validationSchema = Yup.object({
     taskName: Yup.string().max(20, "the max size of the first name is 20 ..!").required("taskName cannot be emptey"),
@@ -46,11 +47,19 @@ const validationSchema = Yup.object({
 // }
 
 const TaskPage = () => {
-    const {AddTodo,todoList} = useTodoContext()
+    const {AddTodo, todoList} = useTodoContext()
+    const [values, dispatch] = useAppContextController()
+
+    let {todo} = values
     // const [todos, dispatch] = useReducer(reducer, [])
     const handleSubmit = (values) => {
-        console.log(values)
-        AddTodo(values);
+        todo.push({
+            id: uuid(),
+            name: values.taskName,
+            date: values.taskDate,
+            completed: false
+        });
+        addTodo(dispatch, todo)
     };
     const formik = useFormik({
         initialValues: {
@@ -70,7 +79,6 @@ const TaskPage = () => {
                         <div className="task-top">
                             <h1>My Todo</h1>
                         </div>
-
                         {/*-------------------------------------*/}
                         <form className="todo-entry" onSubmit={formik.handleSubmit}>
                             <div className="input-container" id="name">
@@ -91,7 +99,6 @@ const TaskPage = () => {
                             </div>
                             <div className="input-container" id="date">
                                 <label htmlFor="date" className="label">Date</label>
-
                                 <input
                                     type="date"
                                     id="taskDate"
@@ -116,8 +123,8 @@ const TaskPage = () => {
                     <div className="todos-show">
                         <div className="todoCard-container">
                             {
-                                todoList.map(todo =>
-                                    <TodoCard key={todo.id}  todo={todo}/>
+                                todo.map(e =>
+                                    <TodoCard key={e.id} todo={e}/>
                                 )
                             }
                         </div>

@@ -4,28 +4,29 @@ import {v4 as uuid} from "uuid"
 const TodoContext = createContext()
 
 const ACTIONS = {
-    ADD_TODO: 'ADD_TODO', TOGGLE_TODO: 'TOGGLE_TODO', DELETE_TODO: 'DELETE_TODO',LOGIN_LOGOUT:"login-logout"
+    ADD_TODO: 'ADD_TODO',
+    TOGGLE_TODO: 'TOGGLE_TODO',
+    DELETE_TODO: 'DELETE_TODO',
+    LOGIN_LOGOUT: "login-logout"
 }
 
-function todoReducer(todoList , action){
-    switch (action.type){
+function todoReducer(todoList, action) {
+    switch (action.type) {
         case  ACTIONS.ADD_TODO :
             return [
-                ...todoList ,
+                ...todoList,
                 {
-                    id:uuid() ,
-                    name:action.payload.taskName,
-                    date:action.payload.taskDate,
-                    completed:false
+                    id: uuid(),
+                    name: action.payload.taskName,
+                    date: action.payload.taskDate,
+                    completed: false
                 }
-                ]
+            ]
         case ACTIONS.TOGGLE_TODO:
-           return  todoList.map(todo => {
-                if (todo.id === action.payload.id){
-                    console.log("barabar")
-                    return  {...todo , completed:!todo.completed}
+            return todoList.map(todo => {
+                if (todo.id === action.payload.id) {
+                    return {...todo, completed: !todo.completed}
                 }
-               console.log("nabarbar")
             })
         default :
             return todoList
@@ -34,31 +35,27 @@ function todoReducer(todoList , action){
 }
 
 
-
-
 const TodoProvider = ({children}) => {
-    const [LoginInfo , setLoginInfo] = useState(false)
-    const [loggedIUserInfo , setLoggedInUserInfo] = useState("")
-    function LoginGenerator(LoginData){
+    const [LoginInfo, setLoginInfo] = useState(false)
+    const [loggedIUserInfo, setLoggedInUserInfo] = useState("")
+
+    function LoginGenerator(LoginData) {
         setLoginInfo(true)
         setLoggedInUserInfo(LoginData)
     }
 
-    function LogoutGenerator(){
+    function LogoutGenerator() {
         setLoginInfo(false)
     }
 
     useEffect(() => {
         console.log(LoginInfo)
-    },[LoginInfo])
+    }, [LoginInfo])
 
 
     const initialTodoValue = ['learn react context api']
     const [todoList, dispatch] = useReducer(todoReducer, initialTodoValue)
 
-    useEffect(()=> {
-        console.log(todoList)
-    } ,[todoList])
 
     const todosNumber = () => {
         return todoList.length;
@@ -74,7 +71,7 @@ const TodoProvider = ({children}) => {
     const ToggleTodo = (todo) => {
         console.log("to do in toggle : ")
         console.log(todo.id)
-        dispatch({type: ACTIONS.TOGGLE_TODO, payload:todo.id})
+        dispatch({type: ACTIONS.TOGGLE_TODO, payload: todo.id})
     }
 
     const contextValue = {
@@ -94,8 +91,6 @@ const TodoProvider = ({children}) => {
         </TodoContext.Provider>
     )
 }
-
-
 
 
 export const useTodoContext = () => useContext(TodoContext);
