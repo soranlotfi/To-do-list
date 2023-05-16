@@ -2,7 +2,7 @@ import {useFormik} from "formik";
 import * as Yup from "yup"
 import "./style.css"
 import {userCheck} from "../../Data/usersData/users";
-import {useTodoContext} from "../../context/TodoProvider";
+import {toggleLogin, useAppContextController} from "../../context/TodoNewContext";
 
 
 const validationSchema = Yup.object({
@@ -20,10 +20,18 @@ const validationSchema = Yup.object({
 })
 
 const LoginPage = () => {
-    const {LoginGenerator} = useTodoContext()
+    const [value, dispatch] = useAppContextController()
+    let LoginInfo = value.isLogin
     const handleSubmit = (values) => {
         const LoginData = userCheck(values.userName, values.password);
-        LoginData ? LoginGenerator(LoginData) : alert("user not found")
+
+        if (LoginData) {
+            LoginInfo = [{isLoggedIn: true}, {LoggedInUser: {name: LoginData.name, email: LoginData.email}}]
+            toggleLogin(dispatch, LoginInfo)
+        } else {
+            alert("user not found")
+        }
+
     }
     const formik = useFormik(
         {

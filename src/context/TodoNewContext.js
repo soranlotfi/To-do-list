@@ -1,5 +1,6 @@
 import {createContext, useContext, useMemo, useReducer} from "react";
 import PropTypes from "prop-types";
+import {type} from "@testing-library/user-event/dist/type";
 
 const AppContext = createContext();
 const ACTIONS = {
@@ -18,8 +19,10 @@ const reducer = (state, action) => {
             return {...state, todo: action.value};
             break;
         case  ACTIONS.LOGIN_LOGOUT :
-            return {...state, isLogin: action.value};
+            return {...state, isLogin: action.value}
             break;
+        case  ACTIONS.TOGGLE_TODO :
+            return {...state, completed: action.value}
         default: {
             throw new Error(`Unhandled action type: ${action.type}`);
         }
@@ -54,6 +57,8 @@ AppContext.propTypes = {
 
 const addTodo = (dispatch, value) => dispatch({type: ACTIONS.ADD_TODO, value})
 const removeTodo = (dispatch, value) => dispatch({type: ACTIONS.DELETE_TODO, value})
+
+const toggleTodo = (dispatch, value) => dispatch({type: ACTIONS.TOGGLE_TODO, value})
 const toggleLogin = (dispatch, value) => dispatch({type: ACTIONS.LOGIN_LOGOUT, value})
 
-export {useAppContextController, AppContextController, addTodo, removeTodo, toggleLogin}
+export {useAppContextController, AppContextController, addTodo, removeTodo, toggleLogin, toggleTodo}

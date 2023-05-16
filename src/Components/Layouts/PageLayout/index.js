@@ -2,13 +2,15 @@ import Footer from "../Footer";
 import {Navbar} from "../Navbar";
 import "./style.css"
 import LoginPage from "../../../pages/loginPage";
-import {useTodoContext} from "../../../context/TodoProvider";
+import {useAppContextController} from "../../../context/TodoNewContext";
 
 const PageLayout = ({children, footer = true}) => {
-    const {LoginInfo} = useTodoContext()
+    const [values] = useAppContextController()
+    let isLoggedIn = values.isLogin
+
     return (
         <div className="layOut">
-            {LoginInfo ? (
+            {isLoggedIn ? (
                 <>
                     <Navbar />
                     {children}

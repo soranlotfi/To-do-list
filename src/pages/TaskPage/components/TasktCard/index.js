@@ -1,17 +1,23 @@
 import "./style.css"
-import {useTodoContext} from "../../../../context/TodoProvider";
-import {removeTodo, useAppContextController} from "../../../../context/TodoNewContext";
+
+import {removeTodo, useAppContextController,toggleTodo} from "../../../../context/TodoNewContext";
+import loginPage from "../../../loginPage";
 
 
 const TodoCard = ({todo}) => {
-    var id = todo.id
-    const {ToggleTodo} = useTodoContext()
     const [values, dispatch] = useAppContextController()
     let {todo: td} = values
 
     function RemoveTodo(id) {
         let newtd = td.filter(p => p.id !== id)
         removeTodo(dispatch, newtd)
+    }
+
+    function completeTodo(id) {
+        var com = td.map(todo=> {
+            return  id===todo.id ? todo.completed=!todo.completed : todo})
+        console.log(com)
+        toggleTodo(dispatch , com)
     }
 
     return (
@@ -30,7 +36,7 @@ const TodoCard = ({todo}) => {
                     <i className="fa fa-edit"></i>
                 </button>
                 <input type="checkbox" name="done" id="doneBtn"
-                       onChange={() => ToggleTodo(todo)}
+                       onChange={() => completeTodo(todo.id)}
                 />
             </div>
         </div>
