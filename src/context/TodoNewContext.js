@@ -8,7 +8,8 @@ const ACTIONS = {
     TOGGLE_TODO: 'TOGGLE_TODO',
     DELETE_TODO: 'DELETE_TODO',
     LOGIN_LOGOUT: "login-logout",
-    EDIT_TODO: "edit-todo"
+    TOGGLE_EDIT_TODO: "toggle-edit-todo",
+    TODO_EDITOR : "edit-todo"
 }
 
 const reducer = (state, action) => {
@@ -22,8 +23,11 @@ const reducer = (state, action) => {
         case  ACTIONS.TOGGLE_TODO :
             return {...state, todo: action.value}
             break;
-        case  ACTIONS.EDIT_TODO : {
+        case  ACTIONS.TOGGLE_EDIT_TODO : {
             return {...state, todo: action.value}
+        }
+        case ACTIONS.TODO_EDITOR: {
+            return {...state , todo: action.value}
         }
         case  ACTIONS.LOGIN_LOGOUT :
             return {...state, isLogin: action.value}
@@ -64,7 +68,9 @@ AppContext.propTypes = {
 const addTodo = (dispatch, value) => dispatch({type: ACTIONS.ADD_TODO, value})
 const removeTodo = (dispatch, value) => dispatch({type: ACTIONS.DELETE_TODO, value})
 const toggleTodo = (dispatch, value) => dispatch({type: ACTIONS.TOGGLE_TODO, value})
-const editTodo = (dispatch , value) => dispatch({type:ACTIONS.EDIT_TODO , value})
+const toggleEditTodo = (dispatch , value) => dispatch({type:ACTIONS.TOGGLE_EDIT_TODO , value})
+const todoEditor = (dispatch , value) => dispatch({type:ACTIONS.TODO_EDITOR , value})
 const toggleLogin = (dispatch, value) => dispatch({type: ACTIONS.LOGIN_LOGOUT, value})
 
-export {useAppContextController, AppContextController, addTodo, removeTodo, toggleLogin, toggleTodo , editTodo}
+
+export {useAppContextController, AppContextController, addTodo, removeTodo, toggleLogin, toggleTodo , toggleEditTodo , todoEditor}

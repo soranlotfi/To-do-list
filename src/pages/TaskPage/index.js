@@ -18,7 +18,7 @@ const validationSchema = Yup.object({
 const TaskPage = () => {
     const [values, dispatch] = useAppContextController()
     let {todo} = values
-    const handleSubmit = (values) => {
+    const handleSubmit = (values , {resetForm}) => {
         todo.push({
             id: uuid(),
             name: values.taskName,
@@ -26,6 +26,7 @@ const TaskPage = () => {
             completed: false
         });
         addTodo(dispatch, todo)
+        resetForm()
     };
     const formik = useFormik({
         initialValues: {
