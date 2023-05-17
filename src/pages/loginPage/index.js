@@ -43,8 +43,10 @@ const LoginPage = () => {
 
         if (LoginData) {
             loginSuccess();
-            LoginInfo = [{isLoggedIn: true}, {LoggedInUser: {name: LoginData.name, email: LoginData.email}}]
-            toggleLogin(dispatch, LoginInfo)
+            setTimeout(() => {
+                LoginInfo = [{isLoggedIn: true}, {LoggedInUser: {name: LoginData.name, email: LoginData.email}}]
+                toggleLogin(dispatch, LoginInfo)
+            } , 300)
         } else {
             errorMsg()
         }
