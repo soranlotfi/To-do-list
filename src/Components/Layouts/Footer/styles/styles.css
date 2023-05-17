@@ -1,0 +1,29 @@
+.app-footer{
+    padding: .4rem 0;
+    background-color: #7350bd;
+}
+
+.footer-captions p{
+    color: #fff;
+    font-weight: 500;
+}
+
+.footer-icons{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.footer-icon{
+    font-size: 2rem;
+    color: #ffffff;
+    transition: all .3s ease-in-out;
+}
+
+.footer-icon:hover{
+    scale: 1.2;
+    color: #282c34;
+}
+

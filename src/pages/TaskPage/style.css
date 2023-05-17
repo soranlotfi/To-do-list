@@ -6,7 +6,12 @@
     align-items: center;
 }
 
+.todoCard-container{
+  z-index: -3;
+}
+
 .todo-container {
+    z-index: 0;
     padding: .8rem;
     border-radius: .3rem;
     background-color: #eeeaea;

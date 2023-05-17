@@ -1,4 +1,4 @@
-
+import"./styles/styles.css"
 const Footer = () => {
     return <footer className="app-footer">
         <div className="container">

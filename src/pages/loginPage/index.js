@@ -3,6 +3,9 @@ import * as Yup from "yup"
 import "./style.css"
 import {userCheck} from "../../Data/usersData/users";
 import {toggleLogin, useAppContextController} from "../../context/TodoNewContext";
+import {toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
+
 
 
 const validationSchema = Yup.object({
@@ -20,16 +23,30 @@ const validationSchema = Yup.object({
 })
 
 const LoginPage = () => {
+
+        const errorMsg = () => {
+        toast.error("user not found ...!" , {
+            className:"toast-msg toast-err"
+        } )
+
+    }
+    const loginSuccess = ()=>{
+            toast.success("logged in successfuly... :)",{
+                className:'toast-msg toast-success'
+        })
+    }
+
     const [value, dispatch] = useAppContextController()
     let LoginInfo = value.isLogin
     const handleSubmit = (values) => {
         const LoginData = userCheck(values.userName, values.password);
 
         if (LoginData) {
+            loginSuccess();
             LoginInfo = [{isLoggedIn: true}, {LoggedInUser: {name: LoginData.name, email: LoginData.email}}]
             toggleLogin(dispatch, LoginInfo)
         } else {
-            alert("user not found")
+            errorMsg()
         }
 
     }

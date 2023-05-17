@@ -17,7 +17,6 @@ const validationSchema = Yup.object({
 
 const TaskPage = () => {
     const [values, dispatch] = useAppContextController()
-    console.log(values)
     let {todo} = values
     const handleSubmit = (values) => {
         todo.push({
