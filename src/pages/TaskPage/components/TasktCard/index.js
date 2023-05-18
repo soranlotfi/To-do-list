@@ -57,7 +57,7 @@ const TodoCard = ({todo}) => {
     }
 
     return (
-        <>
+        <div className="todoCard-container">
             <div style={{opacity: todo.completed ? "0.3" : "1"}} className="task-card">
                 <div className="taskCard-title">
                     <h3> {todo.name}</h3>
@@ -121,7 +121,7 @@ const TodoCard = ({todo}) => {
                     />
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

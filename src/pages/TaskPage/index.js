@@ -6,7 +6,7 @@ import {v4 as uuid} from "uuid"
 import {useFormik} from "formik";
 import * as Yup from "yup"
 import {addTodo, useAppContextController} from "../../context/TodoNewContext";
-
+import NotFound from "./components/notFound";
 
 const validationSchema = Yup.object({
     taskName: Yup.string().max(20, "the max size of the first name is 20 ..!").required("taskName cannot be emptey"),
@@ -14,11 +14,11 @@ const validationSchema = Yup.object({
 })
 
 
-
 const TaskPage = () => {
     const [values, dispatch] = useAppContextController()
     let {todo} = values
-    const handleSubmit = (values , {resetForm}) => {
+    console.log(todo)
+    const handleSubmit = (values, {resetForm}) => {
         todo.push({
             id: uuid(),
             name: values.taskName,
@@ -88,13 +88,10 @@ const TaskPage = () => {
                         </form>
                     </div>
                     <div className="todos-show">
-                        <div className="todoCard-container">
-                            {
-                                todo.map(todo =>
-                                    <TodoCard key={todo.id} todo={todo}/>
-                                )
+                            {todo.length > 0 ? todo.map(todo =>
+                                <TodoCard key={todo.id} todo={todo}/>
+                            ) : <NotFound/>
                             }
-                        </div>
                     </div>
                 </div>
 
