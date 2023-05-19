@@ -4,7 +4,7 @@ export const Navbar = () => {
     return <nav className="navbar">
         <div className="container">
             <div className="navbar-menu">
-                <NavLink to="/">Home</NavLink>
+                <NavLink to="/home">Home</NavLink>
                 <NavLink to="/tasks">TaskManager</NavLink>
                 <NavLink to="/about">About</NavLink>
             </div>

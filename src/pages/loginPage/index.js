@@ -22,18 +22,25 @@ const validationSchema = Yup.object({
         .required("You must enter a password")
 })
 
+
 const LoginPage = () => {
 
-        const errorMsg = () => {
+    const loginFunction = new Promise(resolve => setTimeout(resolve , 3000))
+
+    const loginSuccess = ()=>{
+           toast.promise(
+               loginFunction,
+               {
+                   pending : "checking username and password..." ,
+                   success : "logged in successfuly...",
+                   error : "username or password is invalid"
+               }
+           )
+    }
+    const errorMsg = () => {
         toast.error("user not found ...!" , {
-            className:"toast-msg toast-err"
         } )
 
-    }
-    const loginSuccess = ()=>{
-            toast.success("logged in successfuly... :)",{
-                className:'toast-msg toast-success'
-        })
     }
 
     const [value, dispatch] = useAppContextController()
@@ -46,7 +53,7 @@ const LoginPage = () => {
             setTimeout(() => {
                 LoginInfo = [{isLoggedIn: true}, {LoggedInUser: {name: LoginData.name, email: LoginData.email}}]
                 toggleLogin(dispatch, LoginInfo)
-            } , 300)
+            } , 3000)
         } else {
             errorMsg()
         }

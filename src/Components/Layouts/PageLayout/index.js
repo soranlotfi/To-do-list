@@ -3,7 +3,7 @@ import {Navbar} from "../Navbar";
 import "./style.css"
 import LoginPage from "../../../pages/loginPage";
 import {useAppContextController} from "../../../context/TodoNewContext";
-import {ToastContainer} from "react-toastify";
+
 
 const PageLayout = ({children, footer = true}) => {
     const [values] = useAppContextController()
@@ -14,15 +14,13 @@ const PageLayout = ({children, footer = true}) => {
             {isLoggedIn ? (
                 <>
                     <Navbar />
-                    <ToastContainer/>
                     {children}
                     {footer === true && <Footer />}
                 </>
             ) : (
-                <>
+
                     <LoginPage />
-                    <ToastContainer/>
-                </>
+
             )}
         </div>
     )
